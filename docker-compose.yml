@@ -13,11 +13,6 @@ services:
     volumes:
       - jeilu-db:/var/lib/mysql
     restart: on-failure
-    deploy:
-      resources:
-        limits:
-          cpus: '0.2'
-          memory: 256M
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1"]
       interval: 5s
@@ -31,11 +26,6 @@ services:
     build:
       context: ./backend-jeylu
       dockerfile: Dockerfile
-    deploy:
-      resources:
-        limits:
-          cpus: '0.3'
-          memory: 256M
     env_file:
       - ./backend-jeylu/.env
     restart: on-failure
@@ -52,11 +42,6 @@ services:
       dockerfile: Dockerfile
     volumes:
       - frontend_dist:/app/dist
-    deploy:
-      resources:
-        limits:
-          cpus: '0.3'
-          memory: 256M
     env_file:
       - ./fronted-jeylu/.env
     restart: on-failure
