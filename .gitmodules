@@ -1,6 +1,0 @@
-[submodule "fronted-jeylu"]
-	path = fronted-jeylu
-	url = https://github.com/ErickAguilarGomez/fronted-jeylu.git
-[submodule "backend-jeylu"]
-	path = backend-jeylu
-	url = https://github.com/ErickAguilarGomez/backend-jeylu.git
