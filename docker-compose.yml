@@ -5,11 +5,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
       MYSQL_DATABASE: ${DB_DATABASE}
-      MYSQL_USER: ${DB_USERNAME}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
     env_file:
       - .env
-      - ./backend-jeylu/.env
     volumes:
       - jeilu-db:/var/lib/mysql
     restart: on-failure
@@ -25,9 +22,9 @@ services:
     container_name: backend_jeilu
     build:
       context: ./backend-jeylu
-      dockerfile: Dockerfile
+      dockerfile: ../Dockerfile.backend
     env_file:
-      - ./backend-jeylu/.env
+      - .env
     restart: on-failure
     depends_on:
       database:
@@ -39,42 +36,16 @@ services:
     container_name: frontend_jeilu
     build:
       context: ./fronted-jeylu
-      dockerfile: Dockerfile
-    volumes:
-      - frontend_dist:/app/dist
+      dockerfile: ../Dockerfile.frontend
     env_file:
-      - ./fronted-jeylu/.env
+      - .env
     restart: on-failure
-    networks:
-      - jeilu-net
-
-  nginx:
-    image: nginx:alpine
-    container_name: nginx
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - frontend_dist:/usr/share/nginx/html:ro
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
-      - /home/erick/ssl:/etc/nginx/ssl:ro
-    restart: on-failure
-    deploy:
-      resources:
-        limits:
-          cpus: '0.5'
-          memory: 512M
-    depends_on:
-      - database
-      - backend
-      - frontend
     networks:
       - jeilu-net
 
 networks:
   jeilu-net:
-    driver: bridge
+    external: true
 
 volumes:
   jeilu-db:
-  frontend_dist:

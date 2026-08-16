@@ -1,3 +1,18 @@
-.agents
+# Variables de entorno y configuración sensible
 .env
+.env.*
+.agents
 gemini.md
+
+# Archivos de datos, logs y certificados de Nginx Proxy Manager
+npm-data/
+npm-letsencrypt/
+data/
+letsencrypt/
+*.log
+
+# Dependencias y compilados locales
+node_modules/
+vendor/
+dist/
+.DS_Store
