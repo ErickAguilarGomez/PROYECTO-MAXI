@@ -11,6 +11,10 @@ data/
 letsencrypt/
 *.log
 
+# Carpetas de código locales (ignoradas en este repo para que no aparezcan como submódulos)
+backend-jeylu/
+fronted-jeylu/
+
 # Dependencias y compilados locales
 node_modules/
 vendor/
