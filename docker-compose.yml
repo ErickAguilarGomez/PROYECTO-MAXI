@@ -20,6 +20,7 @@ services:
 
   backend:
     container_name: backend_jeilu
+    image: erickaguilarwda/jeylu-backend:1.0
     build:
       context: ./backend-jeylu
       dockerfile: ../Dockerfile.backend
@@ -34,6 +35,7 @@ services:
 
   frontend:
     container_name: frontend_jeilu
+    image: erickaguilarwda/jeylu-frontend:1.0
     build:
       context: ./fronted-jeylu
       dockerfile: ../Dockerfile.frontend
