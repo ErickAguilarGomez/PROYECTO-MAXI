@@ -11,10 +11,6 @@ data/
 letsencrypt/
 *.log
 
-# Carpetas de código independientes (cada una tiene su propio git independiente)
-backend-jeylu/
-fronted-jeylu/
-
 # Dependencias y compilados locales
 node_modules/
 vendor/
